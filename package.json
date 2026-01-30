@@ -1,0 +1,41 @@
+{
+  "name": "datacanvas-npm-sankha",
+  "version": "1.0.0",
+  "description": "Testing NPM Package for DataCanvas by Sankha",
+  "homepage": "https://github.com/Datacanvas-IoT/Datacanvas-NPM#readme",
+  "bugs": {
+    "url": "https://github.com/Datacanvas-IoT/Datacanvas-NPM/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Datacanvas-IoT/Datacanvas-NPM.git"
+  },
+  "license": "UNLICENSED",
+  "author": "",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "index.cjs",
+    "index.d.cts",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3"
+  }
+}

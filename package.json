@@ -1,0 +1,24 @@
+{
+  "name": "datacanvas-npm",
+  "version": "1.0.0",
+  "description": "NPM  based SDK package for Datacanvas IoT application for Node JS based developments.",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "test": "vitest",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^25.1.0",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3"
+  }
+}

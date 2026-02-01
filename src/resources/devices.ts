@@ -12,7 +12,6 @@ export class DevicesResource {
      * Fetch all devices associated with the project.
      */
     public async list(): Promise<DeviceResponse> {
-
         return this.client.post<DeviceResponse>("/access-keys/external/devices", {});
     }
 }

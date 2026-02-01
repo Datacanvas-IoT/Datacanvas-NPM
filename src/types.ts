@@ -1,5 +1,4 @@
 export interface SDKConfig {
-    baseUrl: string;
     accessKeyId: string;
     secretAccessKey: string;
     projectId: number;
@@ -16,10 +15,12 @@ export interface GetDataParams {
 
 export interface DeviceResponse {
     success: boolean;
-    devices: Array<{
-        device_id: number;
-        device_name: string;
-    }>;
+    devices: Device[];
+}
+
+export interface Device {
+    device_id: number;
+    device_name: string;
 }
 
 export interface DataResponse {

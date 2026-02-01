@@ -16,7 +16,6 @@ export class DataResource {
         if (!params.tableName) {
             throw new Error("SDK Error: tableName is required.");
         }
-
         return this.client.post<DataResponse>("/access-keys/external/data", {
             datatable_name: params.tableName,
             devices: params.deviceIds,

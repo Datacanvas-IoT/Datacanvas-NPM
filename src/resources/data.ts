@@ -12,22 +12,17 @@ export class DataResource {
      * Fetch rows from a datatable.
      */
     public async list(params: GetDataParams): Promise<DataResponse> {
-        // Validation: This is a client-side check to save an API call
-        if (!params.datatableId) {
-            throw new Error("SDK Error: datatableId is required.");
+        // FIXED: Backend uses 'datatable_name' to find the table
+        if (!params.tableName) {
+            throw new Error("SDK Error: tableName is required.");
         }
 
-        return this.client.post<DataResponse>("/external/data", {
-            // Map SDK params to API snake_case fields
-            datatable_id: params.datatableId,
-            device_id: params.deviceId,
-            start_time: params.startTime,
-            end_time: params.endTime,
-            columns: params.columns,
-            sort: params.sort,
-            filters: params.filters,
-            limit: params.limit,
-            offset: params.offset
+        return this.client.post<DataResponse>("/access-keys/external/data", {
+            datatable_name: params.tableName,
+            devices: params.deviceIds, // Backend expects 'devices' as an array of IDs
+            page: params.page || 0,    // Backend uses page-based pagination
+            limit: params.limit || 20,
+            order: params.order || 'DESC'
         });
     }
 }

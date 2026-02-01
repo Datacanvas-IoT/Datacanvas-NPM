@@ -2,41 +2,27 @@ export interface SDKConfig {
     baseUrl: string;
     accessKeyId: string;
     secretAccessKey: string;
-    projectId?: number;
-    origin?: string;
+    projectId: number; // Required for verifyAccessKeys middleware
+    origin?: string;   // Required if using from Node.js (for domain validation)
 }
 
-export interface PaginationParams {
+export interface GetDataParams {
+    tableName: string;      // Matches backend 'datatable_name'
+    deviceIds?: number[];   // Matches backend 'devices'
+    page?: number;          // Backend uses page instead of offset
     limit?: number;
-    offset?: number;
+    order?: 'ASC' | 'DESC';
 }
 
-export interface GetDevicesParams extends PaginationParams {
-    projectId?: number;
-    deviceIds?: number[];
-    includeInactive?: boolean;
-}
-
-export interface GetDataParams extends PaginationParams {
-    datatableId: number;
-    deviceId?: number;
-    startTime?: string;
-    endTime?: string;
-    columns?: string[];
-    sort?: Record<string, "asc" | "desc">;
-    filters?: Record<string, any>;
-}
-
-// Generic responses based on your backend structure
 export interface DeviceResponse {
     success: boolean;
-    count: number;
-    devices: any[];
+    devices: Array<{
+        device_id: number;
+        device_name: string;
+    }>;
 }
 
 export interface DataResponse {
-    success: boolean;
     count: number;
-    data: any[];
-    columns: any[];
+    data: Record<string, any[]>; // Backend groups data by Device ID: { "123": [rows] }
 }

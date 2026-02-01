@@ -1,5 +1,5 @@
 import { HttpClient } from "../core/httpClient";
-import { GetDevicesParams, DeviceResponse } from "../types";
+import { DeviceResponse } from "../types";
 
 export class DevicesResource {
     private client: HttpClient;
@@ -9,16 +9,10 @@ export class DevicesResource {
     }
 
     /**
-     * Fetch a list of devices.
-     * @param params - Optional filters (limit, offset, specific device IDs)
+     * Fetch all devices associated with the project.
      */
-    public async list(params: GetDevicesParams = {}): Promise<DeviceResponse> {
-        return this.client.post<DeviceResponse>("/external/devices", {
-            project_id: params.projectId,
-            device_id_array: params.deviceIds,
-            include_inactive: params.includeInactive,
-            limit: params.limit,
-            offset: params.offset
-        });
+    public async list(): Promise<DeviceResponse> {
+        // The project_id is automatically injected by HttpClient defaultBodyParams
+        return this.client.post<DeviceResponse>("/access-keys/external/devices", {});
     }
 }

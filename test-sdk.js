@@ -2,35 +2,46 @@
 const { MyAppSDK } = require('./dist/index.js');
 
 async function runTest() {
-    console.log("1. Initializing SDK...");
+    console.log("🚀 Starting SDK Integration Test...");
 
     const sdk = new MyAppSDK({
-        //    baseUrl: "http://localhost:4000/api/access-key",
-        // accessKeyId: "4c47fc081ef4830dc9033f4c0ff6fb3c7adf047eeb0242d2",
-        // secretAccessKey: "aaa30482981ac8f95a4f33454315e6cfc3e0b5c88f5c2bb7",
-        accessKeyId: "aaa30482981ac8f95a4f33454315e6cfc3e0b5c88f5c2bb7",
-        secretAccessKey: "4c47fc081ef4830dc9033f4c0ff6fb3c7adf047eeb0242d2",
-        projectId: 14, // A valid project ID from your DB
-
-        // CRITICAL: Since you are running this in Node (not a browser),
-        // you MUST spoof the origin to pass your backend's 'validateDomain' check.
-        origin: "http://example.com"
+        // Note: In index.js you use app.use("/api/access-keys", accessKeyRoute)
+        // If your baseUrl includes /api, the resource calls /access-keys/...
+        baseUrl: "http://localhost:4000/api",
+        accessKeyId: "c3db11f30498795a24c023a2c987152056ff8eff7af2216c",
+        secretAccessKey: "49b50aecee022f1900623f5f24a6cb475aac9e5420965cee",
+        projectId: 15,
+        origin: "http://example.com" // Must match a domain in your AccessKeyDomain table
     });
 
     try {
-        console.log("2. Testing getDevices()...");
-        const devices = await sdk.devices.list({ limit: 5 });
-        console.log("✅ Devices Success:", devices);
+        // --- 2. Test Devices ---
+        // Backend: getAllDevicesForExternal(req.body.project_id)
+        console.log("\n2. Testing devices.list()...");
+        const devices = await sdk.devices.list();
+        console.log("✅ Devices Success!");
+        console.dir(devices, { depth: null });
 
-        console.log("3. Testing getData()...");
+        // --- 3. Test Data ---
+        // Backend: getAllDataForExternal expects 'datatable_name' and 'devices' array
+        console.log("\n3. Testing data.list()...");
         const data = await sdk.data.list({
-            datatableId: 101, // Change to a valid table ID
-            limit: 1
+            tableName: "sensor_logs", // FIXED: Must be the 'tbl_name' string from your database
+            deviceIds: [1, 2],       // Optional: Filter by specific device IDs
+            page: 0,                 // Pagination start
+            limit: 5,                // Items per page
+            order: 'DESC'            // Sort order
         });
-        console.log("✅ Data Success:", data);
+
+        console.log("✅ Data Success!");
+        console.log(`Total Count: ${data.count}`);
+        console.log("Grouped Data (by Device ID):");
+        console.dir(data.data, { depth: null });
 
     } catch (error) {
-        console.error("❌ Test Failed:", error.message);
+        // This will now catch "Domain not allowed", "Expired Key", or "Invalid Pair" 
+        // messages directly from your backend middlewares.
+        console.error("\n❌ Test Failed:", error.message);
     }
 }
 

@@ -21,5 +21,5 @@ export class MyAppSDK {
     }
 }
 
-// Export the types so the user can import them (e.g. 'import { SDKConfig } ...')
+
 export * from "./types";

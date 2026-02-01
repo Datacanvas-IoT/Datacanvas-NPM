@@ -54,7 +54,7 @@ export class HttpClient {
             const data = await response.json();
 
             if (!response.ok) {
-                // Return the backend's error message if available
+
                 throw new Error(data.message || `API Error: ${response.status}`);
             }
 

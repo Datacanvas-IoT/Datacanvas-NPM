@@ -1,5 +1,5 @@
 {
-  "name": "datacanvas-sdk",
+  "name": "@datacanvas/sdk",
   "version": "1.0.0",
   "description": "Official Node.js SDK for DataCanvas IoT Platform - A modern, type-safe, resource-based client library",
   "type": "module",

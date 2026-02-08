@@ -1,6 +1,6 @@
 # DataCanvas SDK for Node.js
 
-[![npm version](https://img.shields.io/npm/v/datacanvas-sdk.svg)](https://www.npmjs.com/package/datacanvas-sdk)
+[![npm version](https://img.shields.io/npm/v/@datacanvas/sdk.svg)](https://www.npmjs.com/package/@datacanvas/sdk)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue.svg)](https://www.typescriptlang.org/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 
@@ -17,15 +17,15 @@ Official Node.js SDK for the **DataCanvas IoT Platform**. A modern, type-safe, a
 ## 📦 Installation
 
 ```bash
-npm install datacanvas-sdk
+npm install @datacanvas/sdk
 ```
 
 ```bash
-yarn add datacanvas-sdk
+yarn add @datacanvas/sdk
 ```
 
 ```bash
-pnpm add datacanvas-sdk
+pnpm add @datacanvas/sdk
 ```
 
 ## 🚀 Quick Start
@@ -33,7 +33,7 @@ pnpm add datacanvas-sdk
 ### TypeScript / ES Modules
 
 ```typescript
-import { DataCanvas, SortOrder } from 'datacanvas-sdk';
+import { DataCanvas, SortOrder } from '@datacanvas/sdk';
 
 // Initialize SDK with default API endpoint
 const client = new DataCanvas({
@@ -68,7 +68,7 @@ console.log(`Retrieved ${data.count} data points`);
 ### JavaScript / CommonJS
 
 ```javascript
-const { DataCanvas, SortOrder } = require('datacanvas-sdk');
+const { DataCanvas, SortOrder } = require('@datacanvas/sdk');
 
 // Initialize SDK with default API endpoint
 const client = new DataCanvas({
@@ -187,7 +187,7 @@ Retrieves data from a specified datatable with optional filtering and pagination
 **Example:**
 
 ```typescript
-import { SortOrder } from 'datacanvas-sdk';
+import { SortOrder } from '@datacanvas/sdk';
 
 // Retrieve all data
 const allData = await client.data.list({
@@ -256,7 +256,7 @@ import {
   ValidationError,
   RateLimitError,
   NetworkError,
-} from 'datacanvas-sdk';
+} from '@datacanvas/sdk';
 
 try {
   const data = await client.data.list({
@@ -313,7 +313,7 @@ import type {
   DataResponse,
   DataPoint,
   GetDataParams,
-} from 'datacanvas-sdk';
+} from '@datacanvas/sdk';
 
 // All types are exported and available for use
 const config: SDKConfig = {
@@ -341,7 +341,7 @@ Contributions are welcome! Please follow these guidelines:
 ```bash
 # Clone repository
 git clone https://github.com/Datacanvas-IoT/Datacanvas-NPM
-cd datacanvas-sdk
+cd Datacanvas-NPM
 
 # Install dependencies
 npm install

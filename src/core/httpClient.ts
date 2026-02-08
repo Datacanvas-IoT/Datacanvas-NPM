@@ -45,7 +45,7 @@ export class HttpClient {
         
         this.headers = {
             'Content-Type': 'application/json',
-            'User-Agent': 'DataCanvas-SDK/1.0.0',
+            'User-Agent': '@datacanvas/sdk/1.0.0',
         };
 
         this.credentials = {

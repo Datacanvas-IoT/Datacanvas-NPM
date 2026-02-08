@@ -36,18 +36,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Initial public release published to npm as `v1.0.0`.
-- Official TypeScript SDK entrypoint (`src/index.ts`) delivering compiled CJS/ESM bundles and type declarations.
-- Core modules: `core/constants.ts`, `core/exceptions.ts`, `core/httpClient.ts`, `types.ts`.
-- Example resources shipped: `resources/data.ts`, `resources/devices.ts`.
-- `prepublishOnly` build script to produce `dist` artifacts; package metadata and README included.
+
+- SDK entrypoint: `DataCanvas` client exported from `src/index.ts` exposing `devices` and `data` resources and re-exporting types, constants and errors.
+
+- Device management resource: `DevicesResource` with `list()` method to retrieve project devices via the `/access-keys/external/devices` endpoint.
+
+- Data retrieval resource: `DataResource` with `list(params: GetDataParams)` providing filtering, pagination and validation for datatable queries against `/access-keys/external/data`.
+
+- Types & defaults: `SDKConfig`, `GetDataParams`, `Device`, `DataPoint`, `DataResponse`, and `DEFAULT_CONFIG` (pagination and limit defaults and caps).
+
+- Runtime & packaging: built with `tsup` producing CJS/ESM bundles and `.d.ts` declarations; `prepublishOnly` script builds `dist` on publish. Package metadata includes `engines.node` constraint (`>=14.0.0`).
 
 ### Changed
 
 -
 
 ### Fixed
-
--
 
 -
 

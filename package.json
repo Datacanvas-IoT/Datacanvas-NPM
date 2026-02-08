@@ -1,21 +1,45 @@
 {
-  "name": "datacanvas-npm",
+  "name": "datacanvas-sdk",
   "version": "1.0.0",
-  "description": "NPM  based SDK package for Datacanvas IoT application for Node JS based developments.",
+  "description": "Official Node.js SDK for DataCanvas IoT Platform - A modern, type-safe, resource-based client library",
+  "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts",
     "test": "vitest",
     "prepublishOnly": "npm run build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "datacanvas",
+    "iot",
+    "sdk",
+    "typescript",
+    "api-client",
+    "sensors",
+    "data-platform",
+    "devices",
+    "rest-api"
+  ],
+  "author": "DataCanvas Team",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Datacanvas-IoT/Datacanvas-NPM.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Datacanvas-IoT/Datacanvas-NPM/issues"
+  },
+  "homepage": "https://github.com/Datacanvas-IoT/Datacanvas-NPM#readme",
+  "engines": {
+    "node": ">=14.0.0"
+  },
   "devDependencies": {
     "@types/node": "^25.1.0",
     "tsup": "^8.5.1",

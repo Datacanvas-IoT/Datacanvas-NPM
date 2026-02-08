@@ -8,7 +8,7 @@ import { SDKConfig } from './types';
  * 
  * @example
  * ```typescript
- * import { DataCanvas, SortOrder } from 'datacanvas-sdk';
+ * import { DataCanvas, SortOrder } from '@datacanvas/sdk';
  * 
  * // Initialize SDK with default API endpoint
  * const client = new DataCanvas({

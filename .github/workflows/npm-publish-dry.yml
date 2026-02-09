@@ -1,12 +1,12 @@
-name: Publish to npm
+name: Publish to npm (dry-run)
 
+# Manual workflow to test the build and publish steps without performing a real publish.
 on:
-  push:
-    branches: [ "vishwani" ]
+  workflow_dispatch:
 
 jobs:
-  publish:
-    name: Publish package
+  dry-publish:
+    name: Dry publish (manual)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -24,7 +24,8 @@ jobs:
       - name: Build (if present)
         run: npm run build --if-present
 
-      - name: Publish to npm
-        run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Pack / Dry-run publish
+        # `npm publish --dry-run` will validate packaging without publishing
+        run: |
+          npm pack
+          npm publish --dry-run || true

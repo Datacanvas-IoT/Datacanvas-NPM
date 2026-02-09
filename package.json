@@ -1,6 +1,6 @@
 {
   "name": "@datacanvas/sdk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Official Node.js SDK for DataCanvas IoT Platform - A modern, type-safe, resource-based client library",
   "type": "module",
   "main": "./dist/index.js",
@@ -14,7 +14,8 @@
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts",
     "test": "vitest",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "release": "npm run build && npm publish --access public"
   },
   "keywords": [
     "datacanvas",
@@ -29,6 +30,9 @@
   ],
   "author": "DataCanvas Team",
   "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Datacanvas-IoT/Datacanvas-NPM.git"

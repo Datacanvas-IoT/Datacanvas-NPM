@@ -373,7 +373,7 @@ This project is licensed under the **Apache License 2.0** - see the [LICENSE](LI
 
 For questions, issues, or feature requests:
 
-- 📧 Email: sankha.b21@gmail.com, rathnayakenethmiit@gmail.com, pramodyalakmina@gmail.com
+- 📧 Email: sankha.b21@gmail.com, rathnayakenethmiit@gmail.com, bhagyalgv@gmail.com
 - 🐛 Issues: [GitHub Issues](https://github.com/Datacanvas-IoT/Datacanvas-NPM/issues)
 - 💬 Discussions: [GitHub Discussions](https://github.com/Datacanvas-IoT/Datacanvas-NPM/discussions)
 

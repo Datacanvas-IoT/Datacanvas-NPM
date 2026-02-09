@@ -2,7 +2,7 @@ name: Publish to npm
 
 on:
   push:
-    branches: [ "vishwani" ]
+    branches: [ "main" ]
 
 jobs:
   publish:
